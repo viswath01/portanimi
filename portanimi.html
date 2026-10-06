@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Viswath Kumar A - Portfolio</title>
+
+    <style>
+        /* =========================
+           RESET
+        ========================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        /* =========================
+           BODY + GRID BACKGROUND
+        ========================== */
+        body {
+            font-family: Arial, sans-serif;
+            color: #222;
+            min-height: 100vh;
+
+            background-color: #e8eef5;
+
+            /* Grid lines */
+            background-image:
+                linear-gradient(#cbd5e1 1px, transparent 1px),
+                linear-gradient(90deg, #cbd5e1 1px, transparent 1px);
+
+            background-size: 40px 40px;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            animation: fadeDown 1s ease;
+        }
+
+        #title {
+            color: #0645ad;
+            font-size: 45px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            margin-top: 10px;
+            color: #555;
+            font-size: 18px;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================== */
+        .menu {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 15px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.95);
+
+            border: 2px solid #0645ad;
+            border-radius: 12px;
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+            animation: slideUp 1s ease;
+        }
+
+        .menu a {
+            color: #0645ad;
+            text-decoration: none;
+            font-weight: bold;
+
+            margin: 0 8px;
+
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ff5722;
+            text-shadow: 0 0 8px rgba(255, 87, 34, 0.4);
+        }
+
+        /* =========================
+           PROFILE IMAGE
+        ========================== */
+        .profile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin: 45px 0;
+
+            animation: zoomIn 1.2s ease;
+        }
+
+        /* Animated circular border */
+        .profile-ring {
+            width: 290px;
+            height: 290px;
+
+            padding: 7px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(
+                45deg,
+                #0645ad,
+                #00c6ff,
+                #ff5722,
+                #0645ad
+            );
+
+            background-size: 300% 300%;
+
+            animation:
+                gradientMove 4s ease infinite,
+                floating 3s ease-in-out infinite;
+
+            box-shadow:
+                0 0 20px rgba(6, 69, 173, 0.5),
+                0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        /* YOUR UPLOADED IMAGE */
+        .profile img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+            object-position: center;
+
+            border-radius: 50%;
+            border: 5px solid white;
+
+            transition: 0.4s ease;
+        }
+
+        .profile img:hover {
+            transform: scale(1.04);
+        }
+
+        /* =========================
+           MAIN GRID
+        ========================== */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+
+            margin: 30px auto 60px;
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 25px;
+        }
+
+        /* =========================
+           INFORMATION BOX
+        ========================== */
+        .box {
+            background: rgba(255, 255, 255, 0.95);
+
+            padding: 25px;
+
+            border: 2px solid #0645ad;
+            border-radius: 15px;
+
+            text-align: center;
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.15);
+
+            animation: fadeIn 1s ease;
+
+            transition: 0.4s;
+        }
+
+        .box:hover {
+            transform: translateY(-8px);
+
+            border-color: #ff5722;
+
+            box-shadow:
+                0 15px 30px rgba(0, 0, 0, 0.2),
+                0 0 15px rgba(255, 87, 34, 0.2);
+        }
+
+        .box h2 {
+            color: #0645ad;
+
+            margin-bottom: 12px;
+
+            font-size: 25px;
+        }
+
+        .box p {
+            font-size: 17px;
+
+            line-height: 1.6;
+
+            color: #444;
+        }
+
+        /* =========================
+           SKILLS
+        ========================== */
+        .skills {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 10px;
+        }
+
+        .skill {
+            background: #0645ad;
+
+            color: white;
+
+            padding: 8px 15px;
+
+            border-radius: 20px;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            background: #ff5722;
+
+            transform: scale(1.1);
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+        footer {
+            text-align: center;
+
+            background: #0645ad;
+
+            color: white;
+
+            padding: 20px;
+
+            font-size: 15px;
+        }
+
+        /* =========================
+           ANIMATIONS
+        ========================== */
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Moving image border */
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Floating image */
+        @keyframes floating {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+        @media (max-width: 700px) {
+
+            #title {
+                font-size: 35px;
+            }
+
+            .menu {
+                width: 95%;
+
+                line-height: 2.2;
+            }
+
+            .menu a {
+                margin: 0 4px;
+            }
+
+            .profile-ring {
+                width: 230px;
+                height: 230px;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+
+                width: 92%;
+            }
+
+            .box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <h1 id="title">
+            My Portfolio
+        </h1>
+
+        <p class="subtitle">
+            Welcome to my personal portfolio
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <nav class="menu">
+
+        <a href="#name">Name</a> |
+        <a href="#college">College</a> |
+        <a href="#department">Department</a> |
+        <a href="#skills">Skills</a> |
+        <a href="#hobbies">Hobbies</a> |
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+
+    <!-- =========================
+         PROFILE IMAGE
+    ========================== -->
+
+    <div class="profile">
+
+        <div class="profile-ring">
+
+            <!-- Uploaded image -->
+            <img
+                src="viswathh.jpeg.jpeg"
+                            >
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         INFORMATION
+    ========================== -->
+
+    <main class="container">
+
+        <!-- NAME -->
+
+        <section class="box" id="name">
+
+            <h2>Name</h2>
+
+            <p>
+                Viswath Kumar A
+            </p>
+
+        </section>
+
+
+        <!-- COLLEGE -->
+
+        <section class="box" id="college">
+
+            <h2>College</h2>
+
+            <p>
+                Sri Saraswathi Theyagaraja College - Pollachi
+            </p>
+
+        </section>
+
+
+        <!-- DEPARTMENT -->
+
+        <section class="box" id="department">
+
+            <h2>Department</h2>
+
+            <p>
+                MCA - 1st Year
+            </p>
+
+        </section>
+
+
+        <!-- SKILLS -->
+
+        <section class="box" id="skills">
+
+            <h2>Skills</h2>
+
+            <div class="skills">
+
+                <span class="skill">
+                    HTML
+                </span>
+
+                <span class="skill">
+                    CSS
+                </span>
+
+                <span class="skill">
+                    C++
+                </span>
+
+                <span class="skill">
+                    Python
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOBBIES -->
+
+        <section class="box" id="hobbies">
+
+            <h2>Hobbies</h2>
+
+            <p>
+                Reading books, listening to music,
+                and playing volleyball
+            </p>
+
+        </section>
+
+
+        <!-- CONTACT -->
+
+        <section class="box" id="contact">
+
+            <h2>Contact</h2>
+
+            <p>
+                📧 viswath01@gmail.com
+            </p>
+
+            <p>
+                📱 6381860556
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Viswath Kumar A | My Portfolio
+        </p>
+
+    </footer>
+
+</body>
+</html>
